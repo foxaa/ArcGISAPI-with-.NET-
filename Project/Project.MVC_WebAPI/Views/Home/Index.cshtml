@@ -1,0 +1,42 @@
+﻿<head>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 800px;
+            width: 800px;
+        }
+
+        #paneDiv {
+            position: absolute;
+            top: 5px;
+            left: 250px;
+            padding: 0 12px 0 12px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.5/esri/css/main.css">
+    <script src="https://js.arcgis.com/4.5/"></script>
+</head>
+<div ng-controller="RouteController">
+   <div id="viewDiv"></div>
+    <div id="paneDiv">Click on the map to add points to the route. You can add 2 points or choose already made routes in dropdown list. </div>
+    <select ng-model="selectedRoute" ng-options="item.id as item.name for item in routes" ng-change="getRoute(selectedRoute)">
+        <option value="">Select Route</option>
+    </select>
+    Selected={{selectedRoute}}
+    <div>
+        <input type="text" placeholder="Name" ng-model="name" required>
+        <button type="submit" class="btn btn-primary" ng-click="Add()">Add</button>
+    </div>
+</div>
+
+
